@@ -65,7 +65,7 @@ class OnboardingScreen extends StatelessWidget {
                   )),
               SafeArea(
                   child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
@@ -81,10 +81,10 @@ class OnboardingScreen extends StatelessWidget {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          Constants.kPinkColor,
-                          Constants.kPinkColor.withOpacity(0),
-                          Constants.kCyanColor.withOpacity(0.1),
-                          Constants.kCyanColor
+                          Constants.kCyanColor,
+                          Constants.kCyanColor.withOpacity(0),
+                          Constants.kPinkColor.withOpacity(0.1),
+                          Constants.kPinkColor
                         ],
                         stops: const [
                           0.2,
@@ -112,7 +112,79 @@ class OnboardingScreen extends StatelessWidget {
                       fontSize: screenHeight <= 667 ? 18 : 34,
                       fontWeight: FontWeight.w700,
                     ),
-                  )
+                  ),
+                  SizedBox(
+                    height: screenHeight * 0.05,
+                  ),
+                  Text(
+                    'Eventos y que hacer',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Constants.kWhiteColor.withOpacity(0.75),
+                      fontSize: screenHeight <= 667 ? 12 : 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  SizedBox(
+                    height: screenHeight * 0.03,
+                  ),
+                  CustomOutline(
+                    strokeWidth: 3,
+                    radius: 20,
+                    padding: const EdgeInsets.all(3),
+                    width: 160,
+                    height: 38,
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Constants.kCyanColor,
+                        Constants.kPinkColor,
+                      ],
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            Constants.kCyanColor.withOpacity(0.5),
+                            Constants.kPinkColor.withOpacity(0.5),
+                          ],
+                        ),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Iniciar',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Constants.kWhiteColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      3,
+                      (index) {
+                        return Container(
+                          height: 7,
+                          width: 7,
+                          margin: const EdgeInsets.symmetric(horizontal: 4),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: index == 0
+                                  ? Constants.kCyanColor
+                                  : Constants.kWhiteColor.withOpacity(0.2)),
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(height: screenHeight * 0.01)
                 ],
               ))
             ],
